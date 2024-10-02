@@ -1,4 +1,4 @@
-import { authOptions } from "@/api/auth/[...nextauth]"
+import { authOptions } from "@/pages/auth/[...nextauth]"
 
 declare module "next-auth" {
     interface Session {
