@@ -13,7 +13,7 @@
         "jsx": "react",
         "incremental": true,
         "paths": {
-            "@/*": ["./src/*"]
+            "@/*": ["./src/*", "./app/*"] // Add "./app/*" here
         },
         "plugins": [
             {
@@ -26,7 +26,9 @@
         "**/*.ts",
         "**/*.tsx",
         ".next/types/**/*.ts",
-        "src/types/next-auth.d.ts" // Add this to include NextAuth type overrides
+        "src/types/next-auth.d.ts",
+        "app/**/*.tsx", // Add this to include files in the app folder
+        "app/**/*.ts" // Add this to include TypeScript files in the app folder
     ],
     "exclude": ["node_modules"]
 }
