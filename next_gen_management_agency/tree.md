@@ -1,4 +1,4 @@
-NEXTGENMANAGEMENTAGENCY_WEBSITE
+📦 NEXTGENMANAGEMENTAGENCY_WEBSITE
 ┣ 📂 .next
 ┃ ┣ 📂 cache
 ┃ ┃ ┣ 📂 swc
@@ -72,6 +72,11 @@ NEXTGENMANAGEMENTAGENCY_WEBSITE
 ┃ ┃ ┗ 📂 auth
 ┃ ┃ ┃ ┗ 📜 [...nextauth].ts
 ┃ ┣ 📂 app
+┃ ┃ ┣ 📂 auth
+┃ ┃ ┃ ┣ 📜 register.tsx
+┃ ┃ ┃ ┣ 📜 signin.tsx
+┃ ┃ ┃ ┣ 📜 signout.tsx
+┃ ┃ ┃ ┗ 📜 [...nextauth].ts
 ┃ ┃ ┣ 📂 fonts
 ┃ ┃ ┃ ┣ 📜 GeistMonoVF.woff
 ┃ ┃ ┃ ┗ 📜 GeistVF.woff
@@ -80,16 +85,10 @@ NEXTGENMANAGEMENTAGENCY_WEBSITE
 ┃ ┃ ┣ 📜 layout.tsx
 ┃ ┃ ┗ 📜 page.tsx
 ┃ ┣ 📂 components
-┃ ┣ 📂 pages
-┃ ┃ ┣ 📂 auth
-┃ ┃ ┃ ┣ 📜 register.tsx
-┃ ┃ ┃ ┣ 📜 signin.tsx
-┃ ┃ ┃ ┗ 📜 signout.tsx
-┃ ┗ 📜 index.tsx
-┣ 📂 services
-┣ 📂 types
-┃ ┗ 📜 next-auth.d.ts
-┣ 📂 utils
+┃ ┣ 📂 services
+┃ ┣ 📂 types
+┃ ┃ ┗ 📜 next-auth.d.ts
+┃ ┗ 📂 utils
 ┣ 📜 .env
 ┣ 📜 .eslintrc.json
 ┣ 📜 .gitignore
