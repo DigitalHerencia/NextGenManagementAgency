@@ -12,7 +12,7 @@ export default function Home() {
             <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
                 {/* Updated logo to use white version */}
                 <Image
-                    src="https://raw.githubusercontent.com/DigitalHerencia/NextGenManagementAgency/main/public/images/NEXT_LOGO-WHITE-OPTIMIZED.png"
+                    src="/images/NEXT_LOGO-WHITE-OPTIMIZED.png"
                     alt="NextGen Management Agency logo"
                     width={256} // Specify exact width
                     height={75} // Specify exact height
