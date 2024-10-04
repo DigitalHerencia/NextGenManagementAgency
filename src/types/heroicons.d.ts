@@ -1,6 +1,7 @@
-// src/types/heroicons.d.ts
 declare module "@heroicons/react/solid" {
     import { FunctionComponent, SVGProps } from "react"
-    const content: FunctionComponent<SVGProps<SVGSVGElement>>
-    export default content
+    const DocumentIcon: FunctionComponent<SVGProps<SVGSVGElement>>
+    const GlobeIcon: FunctionComponent<SVGProps<SVGSVGElement>>
+    const TemplateIcon: FunctionComponent<SVGProps<SVGSVGElement>>
+    export { DocumentIcon, GlobeIcon, TemplateIcon }
 }
