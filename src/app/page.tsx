@@ -14,8 +14,8 @@ export default function Home() {
                 <Image
                     src="https://raw.githubusercontent.com/DigitalHerencia/NextGenManagementAgency/main/public/images/NEXT_LOGO-WHITE-OPTIMIZED.png"
                     alt="NextGen Management Agency logo"
-                    width={180}
-                    height={38}
+                    width={256} // Specify exact width
+                    height={75} // Specify exact height
                     priority
                 />
                 <h1 className="text-4xl sm:text-5xl font-bold text-center sm:text-left">
