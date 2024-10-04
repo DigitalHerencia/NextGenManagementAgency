@@ -1,14 +1,13 @@
 import Image from "next/image";
 import Link from "next/link"
-import React from "react"
 
 export default function Home() {
   return (
       <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
           <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+              {/* Updated logo to use white version */}
               <Image
-                  className="dark:invert"
-                  src="/images/NGMA-AUTH.png" // Use your project's logo from the public directory
+                  src="https://raw.githubusercontent.com/DigitalHerencia/NextGenManagementAgency/main/public/images/NEXT_LOGO-WHITE-OPTIMIZED.png"
                   alt="NextGen Management Agency logo"
                   width={180}
                   height={38}
@@ -58,7 +57,9 @@ export default function Home() {
               </div>
           </main>
 
+          {/* Footer section */}
           <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
+              {/* Updated icons and links */}
               <a
                   className="flex items-center gap-2 hover:underline hover:underline-offset-4"
                   href="https://nextgenmanagementagency.vercel.app/docs/get-started"
@@ -67,8 +68,8 @@ export default function Home() {
               >
                   <Image
                       aria-hidden
-                      src="/images/file-icon.svg"
-                      alt="File icon"
+                      src="/images/get-started-icon.svg" // Use a valid icon file name
+                      alt="Get Started icon"
                       width={16}
                       height={16}
                   />
