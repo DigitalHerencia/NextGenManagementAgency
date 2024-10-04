@@ -22,9 +22,10 @@ const targetFiles = [
     "H:/DigitalHerencia/.environments/NextGenManagementAgency_WEBSITE/src/app/globals.css",
     "H:/DigitalHerencia/.environments/NextGenManagementAgency_WEBSITE/src/app/layout.tsx",
     "H:/DigitalHerencia/.environments/NextGenManagementAgency_WEBSITE/src/app/page.tsx",
-    "H:/DigitalHerencia/.environments/NextGenManagementAgency_WEBSITE/src/pages/auth/register.tsx",
-    "H:/DigitalHerencia/.environments/NextGenManagementAgency_WEBSITE/src/pages/auth/signin.tsx",
-    "H:/DigitalHerencia/.environments/NextGenManagementAgency_WEBSITE/src/pages/auth/signout.tsx",
+    "H:/DigitalHerencia/.environments/NextGenManagementAgency_WEBSITE/src/app/auth/register.tsx",
+    "H:/DigitalHerencia/.environments/NextGenManagementAgency_WEBSITE/src/app/auth/signin.tsx",
+    "H:/DigitalHerencia/.environments/NextGenManagementAgency_WEBSITE/src/app/auth/signout.tsx",
+    "H:/DigitalHerencia/.environments/NextGenManagementAgency_WEBSITE/src/app/auth/[...nextauth].ts",
     "H:/DigitalHerencia/.environments/NextGenManagementAgency_WEBSITE/src/types/next-auth.d.ts",
 ]
 
@@ -38,7 +39,7 @@ const writeMarkdownFile = (content, filePath) => {
     console.log(`Markdown file written to ${filePath}`)
 }
 
-// Function to read and generate markdown content for each file
+// Function to generate markdown for each file
 const generateMarkdownContent = (files) => {
     let markdownContent = `# Project Code Review\n\n`
 
@@ -48,15 +49,28 @@ const generateMarkdownContent = (files) => {
             const fileContent = fs.readFileSync(file, "utf8")
             const fileName = path.basename(file)
             const filePath = file
+            const fileSize = fs.statSync(file).size // Get file size
+            const lastModified = fs.statSync(file).mtime // Get last modified date
 
             // Write markdown formatted content
             markdownContent += `## File: ${fileName}\n`
-            markdownContent += `\`Path: ${filePath}\`\n\n`
-            markdownContent += "```javascript\n"
-            markdownContent += fileContent
-            markdownContent += "\n```\n\n---\n\n"
+            markdownContent += `**Path**: \`${filePath}\`\n`
+            markdownContent += `**Size**: ${fileSize} bytes\n`
+            markdownContent += `**Last Modified**: ${lastModified}\n\n`
+
+            // Skip binary files like fonts or images
+            if (file.endsWith(".woff") || file.endsWith(".ico")) {
+                markdownContent += "`[Binary file, skipped]`\n\n"
+            } else {
+                markdownContent += "```javascript\n"
+                markdownContent += fileContent
+                markdownContent += "\n```\n\n"
+            }
+
+            markdownContent += "---\n\n"
         } catch (error) {
             console.error(`Error reading file ${file}: ${error.message}`)
+            markdownContent += `**Error**: Could not read file ${__filename}\n\n`
         }
     })
 
