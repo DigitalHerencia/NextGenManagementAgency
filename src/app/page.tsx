@@ -1,4 +1,8 @@
-import { DocumentIcon, GlobeIcon, TemplateIcon } from "@heroicons/react/solid"
+import {
+    DocumentDuplicateIcon,
+    DocumentTextIcon,
+    GlobeAltIcon,
+} from "@heroicons/react/24/solid"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -66,7 +70,7 @@ export default function Home() {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    <DocumentIcon className="w-5 h-5" aria-hidden="true" />
+                    <DocumentTextIcon className="w-5 h-5" aria-hidden="true" />
                     Get Started
                 </a>
                 <a
@@ -75,7 +79,10 @@ export default function Home() {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    <TemplateIcon className="w-5 h-5" aria-hidden="true" />
+                    <DocumentDuplicateIcon
+                        className="w-5 h-5"
+                        aria-hidden="true"
+                    />
                     Templates
                 </a>
                 <a
@@ -84,7 +91,7 @@ export default function Home() {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    <GlobeIcon className="w-5 h-5" aria-hidden="true" />
+                    <GlobeAltIcon className="w-5 h-5" aria-hidden="true" />
                     Learn more about us
                 </a>
             </footer>
