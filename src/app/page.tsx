@@ -15,7 +15,7 @@ export default function Home() {
                     src="/images/SHAPES_BLACK.png"
                     alt="Background Shapes"
                     fill
-                    style={{ objectFit: "fill", opacity: 0.3 }}
+                    style={{ objectFit: "contain", opacity: 0.3 }}
                 />
             </div>
 
