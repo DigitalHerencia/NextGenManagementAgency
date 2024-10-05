@@ -8,45 +8,50 @@ import Link from "next/link"
 
 export default function Home() {
     return (
-        <div className="relative min-h-screen bg-black text-white">
+        <div className="relative min-h-screen bg-black text-white overflow-hidden">
             {/* Background Shapes */}
-            <div className="absolute top-0 left-0 w-[150%] h-[150%] -translate-x-[45%] -translate-y-[25%] overflow-hidden">
+            <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
                 <Image
                     src="/images/SHAPES_BLACK.png"
                     alt="Background Shapes"
-                    fill
-                    style={{ objectFit: "cover", opacity: 0.3 }}
+                    layout="fill"
+                    objectFit="cover"
+                    objectPosition="center"
+                    priority
+                    style={{ opacity: 0.3 }}
                 />
             </div>
 
-            <div className="relative grid grid-rows-[20px_1fr_20px] items-center justify-items-center p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)] z-10">
-                <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-                    {/* Logo */}
-                    <Image
-                        src="/images/NGMA-AUTH-BLACK.png"
-                        alt="NextGen Management Agency logo"
-                        width={256} // Specify exact width
-                        height={75} // Specify exact height
-                        priority
-                    />
+            {/* Main Content */}
+            <div className="relative z-10 flex flex-col justify-center items-center h-full p-8 sm:p-20">
+                <main className="text-center">
+                    {/* Adjusted logo placement */}
+                    <div className="mb-8">
+                        <Image
+                            src="/images/NGMA-AUTH-BLACK.png"
+                            alt="NextGen Management Agency logo"
+                            width={256}
+                            height={75}
+                            priority
+                            className="mx-auto"
+                        />
+                    </div>
 
-                    {/* Main Content */}
-                    <h1 className="text-4xl sm:text-5xl font-bold text-center sm:text-left">
+                    <h1 className="text-4xl sm:text-5xl font-bold mb-4">
                         Welcome to NextGen Management Agency
                     </h1>
-                    <p className="text-lg sm:text-xl text-center sm:text-left">
+                    <p className="text-lg sm:text-xl mb-6">
                         Manage talent and clients seamlessly with our all-in-one
                         solution for agencies.
                     </p>
 
-                    <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
+                    <ol className="list-inside list-decimal text-sm sm:text-base font-mono mb-8">
                         <li className="mb-2">
                             To get started, sign in to your account.{" "}
-                            <Link
-                                href="/auth/signin"
-                                className="text-blue-600 underline hover:text-blue-800"
-                            >
-                                Sign In
+                            <Link href="/auth/signin">
+                                <a className="text-blue-600 underline hover:text-blue-800">
+                                    Sign In
+                                </a>
                             </Link>
                         </li>
                         <li>
@@ -55,10 +60,9 @@ export default function Home() {
                         </li>
                     </ol>
 
-                    {/* Call to Action Buttons */}
-                    <div className="flex gap-4 items-center flex-col sm:flex-row">
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
                         <a
-                            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
+                            className="rounded-full border border-solid border-transparent bg-foreground text-background transition-colors hover:bg-gray-800 dark:hover:bg-gray-400 text-sm sm:text-base h-10 sm:h-12 px-6"
                             href="https://nextgenmanagementagency.vercel.app/register"
                             target="_blank"
                             rel="noopener noreferrer"
@@ -66,7 +70,7 @@ export default function Home() {
                             Join as a Talent or Client
                         </a>
                         <a
-                            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
+                            className="rounded-full border border-solid border-gray-700 dark:border-gray-300 hover:bg-gray-200 dark:hover:bg-gray-900 text-sm sm:text-base h-10 sm:h-12 px-6"
                             href="https://nextgenmanagementagency.vercel.app/docs"
                             target="_blank"
                             rel="noopener noreferrer"
@@ -76,39 +80,33 @@ export default function Home() {
                     </div>
                 </main>
 
-                {/* Footer Section */}
-                <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
+                {/* Footer */}
+                <footer className="flex gap-6 flex-wrap justify-center">
                     <a
-                        className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+                        className="flex items-center gap-2 hover:underline"
                         href="https://nextgenmanagementagency.vercel.app/docs/get-started"
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        <DocumentTextIcon
-                            className="w-5 h-5"
-                            aria-hidden="true"
-                        />
+                        <DocumentTextIcon className="w-5 h-5" />
                         Get Started
                     </a>
                     <a
-                        className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+                        className="flex items-center gap-2 hover:underline"
                         href="https://vercel.com/templates?framework=next.js"
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        <DocumentDuplicateIcon
-                            className="w-5 h-5"
-                            aria-hidden="true"
-                        />
+                        <DocumentDuplicateIcon className="w-5 h-5" />
                         Templates
                     </a>
                     <a
-                        className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+                        className="flex items-center gap-2 hover:underline"
                         href="https://nextgenmanagementagency.vercel.app/about"
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        <GlobeAltIcon className="w-5 h-5" aria-hidden="true" />
+                        <GlobeAltIcon className="w-5 h-5" />
                         Learn more about us
                     </a>
                 </footer>
