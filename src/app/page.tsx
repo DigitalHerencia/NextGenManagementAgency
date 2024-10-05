@@ -3,6 +3,7 @@ import {
     ShieldCheckIcon,
     UserCircleIcon,
 } from "@heroicons/react/24/solid"
+import { signIn } from "next-auth/react"
 import Image from "next/image"
 
 export default function Home() {
@@ -11,7 +12,7 @@ export default function Home() {
             {/* Background Shapes */}
             <div className="fixed top-0 left-0 w-[225%] h-[225%] translate-x-[5%] -translate-y-[27%] transform rotate-180">
                 <Image
-                    className="object-contain opacity-30" // Use Tailwind classes for styling
+                    className="object-contain opacity-30"
                     src="/images/SHAPES_BLACK.png"
                     alt="Background Shapes"
                     fill
@@ -53,18 +54,17 @@ export default function Home() {
                     <div className="flex gap-4 items-center flex-col sm:flex-row">
                         <a
                             className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-                            href="https://nextgenmanagementagency.vercel.app/register"
-                            target="_blank"
-                            rel="noopener noreferrer"
+                            href="/register"
                         >
                             Join as a Talent or Client
                         </a>
-                        <a
+
+                        <button
                             className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-blue-600 hover:bg-blue-800 text-white text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-                            href="/auth/signin"
+                            onClick={() => signIn("auth0")}
                         >
                             Login
-                        </a>
+                        </button>
                     </div>
                 </main>
 
@@ -72,7 +72,7 @@ export default function Home() {
                 <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center absolute bottom-5 w-full">
                     <a
                         className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-                        href="https://nextgenmanagementagency.vercel.app/contact"
+                        href="/contact"
                         target="_blank"
                         rel="noopener noreferrer"
                     >
@@ -81,7 +81,7 @@ export default function Home() {
                     </a>
                     <a
                         className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-                        href="https://nextgenmanagementagency.vercel.app/about"
+                        href="/about"
                         target="_blank"
                         rel="noopener noreferrer"
                     >
@@ -93,7 +93,7 @@ export default function Home() {
                     </a>
                     <a
                         className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-                        href="https://nextgenmanagementagency.vercel.app/privacy-policy"
+                        href="/privacy-policy"
                         target="_blank"
                         rel="noopener noreferrer"
                     >

@@ -7,56 +7,44 @@ import Auth0Provider from "next-auth/providers/auth0"
 const prisma = new PrismaClient()
 
 export const authOptions: NextAuthOptions = {
-    // Prisma Adapter for NextAuth
     adapter: PrismaAdapter(prisma),
 
-    // Configure Auth0 Provider
+    // Auth0 Provider
     providers: [
         Auth0Provider({
-            clientId: process.env.AUTH0_CLIENT_ID || "", // Ensure env variables are set
+            clientId: process.env.AUTH0_CLIENT_ID || "",
             clientSecret: process.env.AUTH0_CLIENT_SECRET || "",
-            issuer: `https://${process.env.AUTH0_DOMAIN || ""}`, // Use Auth0 domain from env
+            issuer:
+                process.env.AUTH0_ISSUER_BASE_URL ||
+                `https://${process.env.AUTH0_DOMAIN}`,
         }),
     ],
 
-    // Secret for NextAuth sessions
     secret: process.env.NEXTAUTH_SECRET,
 
-    // Session Configuration
     session: {
-        strategy: "jwt", // Using JSON Web Tokens for session handling
-        maxAge: 24 * 60 * 60, // Session expiration set to 1 day
-        updateAge: 60 * 60, // Refresh JWT after 1 hour of inactivity
+        strategy: "jwt",
+        maxAge: 24 * 60 * 60,
+        updateAge: 60 * 60,
     },
 
-    // Custom Pages for Auth
-    pages: {
-        signIn: "/auth/signin", // Custom sign-in page
-        error: "/auth/error", // Custom error page
-    },
-
-    // Callbacks for customizing JWT and session
     callbacks: {
         async session({ session, token }) {
-            // Add user ID and role to the session
-            if (session?.user && token.sub) {
-                session.user.id = token.sub || "" // Add safe check
-                session.user.role = token.role || "USER" // Default role to USER
+            if (session?.user && token?.sub) {
+                session.user.id = token.sub
+                session.user.role = token.role || "USER"
             }
             return session
         },
-
         async jwt({ token, user }) {
-            // Add user ID and role to JWT token
             if (user) {
-                token.sub = user.id || "" // Add safe check
-                token.role = user.role || "USER" // Default role to USER
+                token.sub = user.id
+                token.role = user.role || "USER"
             }
             return token
         },
     },
 
-    // Enable debugging in development mode
     debug: process.env.NODE_ENV === "development",
 }
 
