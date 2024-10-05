@@ -1,36 +1,36 @@
 import {
-    DocumentDuplicateIcon,
-    DocumentTextIcon,
-    GlobeAltIcon,
+    EnvelopeIcon,
+    ShieldCheckIcon,
+    UserCircleIcon,
 } from "@heroicons/react/24/solid"
 import Image from "next/image"
-import Link from "next/link"
 
 export default function Home() {
     return (
         <div className="relative min-h-screen bg-black text-white">
             {/* Background Shapes */}
-            <div className="absolute top-0 left-0 w-[225%] h-[225%] -translate-x-[65%] -translate-y-[25%] overflow-hidden">
+            <div className="fixed top-0 left-0 w-[225%] h-[225%] translate-x-[5%] -translate-y-[27%] transform rotate-180">
                 <Image
+                    className="object-contain opacity-30" // Use Tailwind classes for styling
                     src="/images/SHAPES_BLACK.png"
                     alt="Background Shapes"
                     fill
-                    style={{ objectFit: "contain", opacity: 0.3 }}
                 />
             </div>
 
+            {/* Main content with logo and text */}
             <div className="relative grid grid-rows-[20px_1fr_20px] items-center justify-items-center p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)] z-10">
                 <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
                     {/* Logo */}
                     <Image
                         src="/images/NGMA-AUTH-BLACK.png"
                         alt="NextGen Management Agency logo"
-                        width={256} // Specify exact width
-                        height={75} // Specify exact height
+                        width={256}
+                        height={75}
                         priority
                     />
 
-                    {/* Main Content */}
+                    {/* Main content */}
                     <h1 className="text-4xl sm:text-5xl font-bold text-center sm:text-left">
                         Welcome to NextGen Management Agency
                     </h1>
@@ -41,13 +41,7 @@ export default function Home() {
 
                     <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
                         <li className="mb-2">
-                            To get started, sign in to your account.{" "}
-                            <Link
-                                href="/auth/signin"
-                                className="text-blue-600 underline hover:text-blue-800"
-                            >
-                                Sign In
-                            </Link>
+                            To get started, sign in to your account.
                         </li>
                         <li>
                             Manage your talent, track projects, and deliver
@@ -66,41 +60,24 @@ export default function Home() {
                             Join as a Talent or Client
                         </a>
                         <a
-                            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-                            href="https://nextgenmanagementagency.vercel.app/docs"
-                            target="_blank"
-                            rel="noopener noreferrer"
+                            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-blue-600 hover:bg-blue-800 text-white text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
+                            href="/auth/signin"
                         >
-                            Read the Documentation
+                            Login
                         </a>
                     </div>
                 </main>
 
                 {/* Footer Section */}
-                <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
+                <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center absolute bottom-5 w-full">
                     <a
                         className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-                        href="https://nextgenmanagementagency.vercel.app/docs/get-started"
+                        href="https://nextgenmanagementagency.vercel.app/contact"
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        <DocumentTextIcon
-                            className="w-5 h-5"
-                            aria-hidden="true"
-                        />
-                        Get Started
-                    </a>
-                    <a
-                        className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-                        href="https://vercel.com/templates?framework=next.js"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        <DocumentDuplicateIcon
-                            className="w-5 h-5"
-                            aria-hidden="true"
-                        />
-                        Templates
+                        <EnvelopeIcon className="w-5 h-5" aria-hidden="true" />
+                        Contact
                     </a>
                     <a
                         className="flex items-center gap-2 hover:underline hover:underline-offset-4"
@@ -108,8 +85,23 @@ export default function Home() {
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        <GlobeAltIcon className="w-5 h-5" aria-hidden="true" />
-                        Learn more about us
+                        <UserCircleIcon
+                            className="w-5 h-5"
+                            aria-hidden="true"
+                        />
+                        About
+                    </a>
+                    <a
+                        className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+                        href="https://nextgenmanagementagency.vercel.app/privacy-policy"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <ShieldCheckIcon
+                            className="w-5 h-5"
+                            aria-hidden="true"
+                        />
+                        Privacy Policy
                     </a>
                 </footer>
             </div>

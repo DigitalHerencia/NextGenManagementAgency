@@ -1,3 +1,4 @@
+import { UserProvider } from "@auth0/nextjs-auth0/client"
 import type { Metadata } from "next"
 import localFont from "next/font/local"
 import React from "react"
@@ -7,11 +8,14 @@ const geistSans = localFont({
     src: "./fonts/GeistVF.woff",
     variable: "--font-geist-sans",
     weight: "100 900",
+    display: "swap", // Added display: swap for performance optimization
 })
+
 const geistMono = localFont({
     src: "./fonts/GeistMonoVF.woff",
     variable: "--font-geist-mono",
     weight: "100 900",
+    display: "swap", // Added display: swap for performance optimization
 })
 
 export const metadata: Metadata = {
@@ -26,11 +30,13 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body
-                className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-            >
-                {children}
-            </body>
+            <UserProvider>
+                <body
+                    className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+                >
+                    {children}
+                </body>
+            </UserProvider>
         </html>
     )
 }

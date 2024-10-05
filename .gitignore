@@ -9,7 +9,7 @@
 # testing
 /coverage
 
-# next.js
+# next.js build output
 /.next/
 /out/
 
@@ -20,17 +20,41 @@
 .DS_Store
 *.pem
 
-# debug
+# debug logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
 # local env files
+.env
 .env*.local
+.env.development.local
+.env.production.local
+.env.test.local
 
 # vercel
 .vercel
+.vercel_build_output
 
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# prisma (if using Prisma for DB management)
+prisma/migrations/
+prisma/dev.db
+prisma/dev.db-journal
+
+# Auth0
+auth0_logs/
+
+# IDE or editor-specific
+.vscode/
+.idea/
+*.swp
+*.sublime*
+
+# Lockfiles (if using different package managers)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
