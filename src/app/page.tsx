@@ -3,6 +3,7 @@ import {
     DocumentTextIcon,
     GlobeAltIcon,
 } from "@heroicons/react/24/solid"
+import { motion } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -10,7 +11,7 @@ export default function Home() {
     return (
         <div className="relative grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
             {/* Background Shapes */}
-            <div className="absolute inset-0 -z-10">
+            <div className="absolute inset-0 -z-10 transform translate-x-32">
                 <Image
                     src="/images/SHAPES_BLACK.png" // Use shapes as background
                     alt="Background Shapes"
@@ -22,23 +23,48 @@ export default function Home() {
             </div>
 
             <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start z-10">
-                {/* Updated logo to use black version */}
-                <Image
-                    src="/images/NGMA-AUTH-BLACK.png"
-                    alt="NextGen Management Agency logo"
-                    width={300} // Adjust logo width
-                    height={100} // Adjust logo height
-                    priority
-                />
-                <h1 className="text-4xl sm:text-5xl font-bold text-center sm:text-left">
+                {/* Framer Motion Animation for the Logo */}
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.8, ease: "easeInOut" }}
+                >
+                    <Image
+                        src="/images/NGMA-AUTH-BLACK.png"
+                        alt="NextGen Management Agency logo"
+                        width={300} // Adjust logo width
+                        height={100} // Adjust logo height
+                        priority
+                    />
+                </motion.div>
+
+                {/* Framer Motion for Heading */}
+                <motion.h1
+                    initial={{ opacity: 0, x: -50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 1, ease: "easeOut" }}
+                    className="text-4xl sm:text-5xl font-bold text-center sm:text-left"
+                >
                     Welcome to NextGen Management Agency
-                </h1>
-                <p className="text-lg sm:text-xl text-center sm:text-left">
+                </motion.h1>
+
+                <motion.p
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    className="text-lg sm:text-xl text-center sm:text-left"
+                >
                     Manage talent and clients seamlessly with our all-in-one
                     solution for agencies.
-                </p>
+                </motion.p>
 
-                <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
+                {/* Sign-In Steps with Fade-In Animation */}
+                <motion.ol
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1, delay: 0.2 }}
+                    className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]"
+                >
                     <li className="mb-2">
                         To get started, sign in to your account.{" "}
                         <Link
@@ -52,9 +78,15 @@ export default function Home() {
                         Manage your talent, track projects, and deliver
                         exceptional results.
                     </li>
-                </ol>
+                </motion.ol>
 
-                <div className="flex gap-4 items-center flex-col sm:flex-row">
+                {/* Buttons with Staggered Animations */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1, delay: 0.3 }}
+                    className="flex gap-4 items-center flex-col sm:flex-row"
+                >
                     <a
                         className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
                         href="https://nextgenmanagementagency.vercel.app/register"
@@ -71,11 +103,16 @@ export default function Home() {
                     >
                         Read the Documentation
                     </a>
-                </div>
+                </motion.div>
             </main>
 
             {/* Footer section */}
-            <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
+            <motion.footer
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 0.4 }}
+                className="row-start-3 flex gap-6 flex-wrap items-center justify-center"
+            >
                 <a
                     className="flex items-center gap-2 hover:underline hover:underline-offset-4"
                     href="https://nextgenmanagementagency.vercel.app/docs/get-started"
@@ -106,7 +143,7 @@ export default function Home() {
                     <GlobeAltIcon className="w-5 h-5" aria-hidden="true" />
                     Learn more about us
                 </a>
-            </footer>
+            </motion.footer>
         </div>
     )
 }
