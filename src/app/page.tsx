@@ -10,7 +10,7 @@ export default function Home() {
     return (
         <div className="relative min-h-screen bg-black text-white">
             {/* Background Shapes */}
-            <div className="absolute top-0 left-0 w-[225%] h-[225%] -translate-x-[45%] -translate-y-[25%] overflow-hidden">
+            <div className="absolute top-0 left-0 w-[225%] h-[225%] -translate-x-[65%] -translate-y-[25%] overflow-hidden">
                 <Image
                     src="/images/SHAPES_BLACK.png"
                     alt="Background Shapes"
