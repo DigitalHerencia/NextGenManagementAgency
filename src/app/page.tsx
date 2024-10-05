@@ -8,14 +8,26 @@ import Link from "next/link"
 
 export default function Home() {
     return (
-        <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[var(--font-geist-sans)] bg-background text-foreground">
-            <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-                {/* Updated logo to use white version */}
+        <div className="relative grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+            {/* Background Shapes */}
+            <div className="absolute inset-0 -z-10">
                 <Image
-                    src="/images/NGMA-AUTH.png"
+                    src="/images/SHAPES_BLACK.png" // Use shapes as background
+                    alt="Background Shapes"
+                    layout="fill"
+                    objectFit="cover"
+                    objectPosition="center"
+                    className="opacity-20" // Adjust opacity to blend with the design
+                />
+            </div>
+
+            <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start z-10">
+                {/* Updated logo to use black version */}
+                <Image
+                    src="/images/NGMA-AUTH-BLACK.png"
                     alt="NextGen Management Agency logo"
-                    width={256} // Specify exact width
-                    height={75} // Specify exact height
+                    width={300} // Adjust logo width
+                    height={100} // Adjust logo height
                     priority
                 />
                 <h1 className="text-4xl sm:text-5xl font-bold text-center sm:text-left">
@@ -26,7 +38,7 @@ export default function Home() {
                     solution for agencies.
                 </p>
 
-                <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[var(--font-geist-mono)]">
+                <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
                     <li className="mb-2">
                         To get started, sign in to your account.{" "}
                         <Link
