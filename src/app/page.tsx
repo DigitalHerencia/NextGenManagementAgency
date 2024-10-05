@@ -3,9 +3,31 @@ import {
     DocumentTextIcon,
     GlobeAltIcon,
 } from "@heroicons/react/24/solid"
-import { motion } from "framer-motion"
+import dynamic from "next/dynamic"
 import Image from "next/image"
 import Link from "next/link"
+
+// Dynamically import motion from framer-motion to fix server-side rendering issues
+const MotionDiv = dynamic(
+    () => import("framer-motion").then((mod) => mod.motion.div),
+    { ssr: false }
+)
+const MotionH1 = dynamic(
+    () => import("framer-motion").then((mod) => mod.motion.h1),
+    { ssr: false }
+)
+const MotionP = dynamic(
+    () => import("framer-motion").then((mod) => mod.motion.p),
+    { ssr: false }
+)
+const MotionOl = dynamic(
+    () => import("framer-motion").then((mod) => mod.motion.ol),
+    { ssr: false }
+)
+const MotionFooter = dynamic(
+    () => import("framer-motion").then((mod) => mod.motion.footer),
+    { ssr: false }
+)
 
 export default function Home() {
     return (
@@ -24,7 +46,7 @@ export default function Home() {
 
             <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start z-10">
                 {/* Framer Motion Animation for the Logo */}
-                <motion.div
+                <MotionDiv
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.8, ease: "easeInOut" }}
@@ -36,19 +58,19 @@ export default function Home() {
                         height={100} // Adjust logo height
                         priority
                     />
-                </motion.div>
+                </MotionDiv>
 
                 {/* Framer Motion for Heading */}
-                <motion.h1
+                <MotionH1
                     initial={{ opacity: 0, x: -50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 1, ease: "easeOut" }}
                     className="text-4xl sm:text-5xl font-bold text-center sm:text-left"
                 >
                     Welcome to NextGen Management Agency
-                </motion.h1>
+                </MotionH1>
 
-                <motion.p
+                <MotionP
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
@@ -56,10 +78,10 @@ export default function Home() {
                 >
                     Manage talent and clients seamlessly with our all-in-one
                     solution for agencies.
-                </motion.p>
+                </MotionP>
 
                 {/* Sign-In Steps with Fade-In Animation */}
-                <motion.ol
+                <MotionOl
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1, delay: 0.2 }}
@@ -78,10 +100,10 @@ export default function Home() {
                         Manage your talent, track projects, and deliver
                         exceptional results.
                     </li>
-                </motion.ol>
+                </MotionOl>
 
                 {/* Buttons with Staggered Animations */}
-                <motion.div
+                <MotionDiv
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1, delay: 0.3 }}
@@ -103,11 +125,11 @@ export default function Home() {
                     >
                         Read the Documentation
                     </a>
-                </motion.div>
+                </MotionDiv>
             </main>
 
             {/* Footer section */}
-            <motion.footer
+            <MotionFooter
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1, delay: 0.4 }}
@@ -143,7 +165,7 @@ export default function Home() {
                     <GlobeAltIcon className="w-5 h-5" aria-hidden="true" />
                     Learn more about us
                 </a>
-            </motion.footer>
+            </MotionFooter>
         </div>
     )
 }
