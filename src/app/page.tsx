@@ -1,10 +1,12 @@
+"use client" // This tells Next.js to treat this file as a Client Component
+
+import { signIn } from "next-auth/react"
+import Image from "next/image"
 import {
     EnvelopeIcon,
     ShieldCheckIcon,
     UserCircleIcon,
 } from "@heroicons/react/24/solid"
-import { signIn } from "next-auth/react"
-import Image from "next/image"
 
 export default function Home() {
     return (
